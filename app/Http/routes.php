@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/testdb','IndexController@index');
 
 //测试后台登陆
-Route::get('/admin/login','Admin\LoginController@login');
+Route::any('/admin/login','Admin\LoginController@login');
 
 //测试验证码
 Route::get('/admin/code','Admin\LoginController@code');

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Model\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 
 require_once '\resources\org\code\Code.class.php';
 
@@ -12,7 +14,21 @@ class LoginController extends CommonController
 {
     //
     public function login(){
-        return view('admin.login');
+        if ($input = Input::all()){
+            //dd($input);
+            $code = new \Code;
+            $_code = $code->get();
+            if ($_code != strtoupper($input['code'])){
+                return back()->with('msg','验证码错误');
+            }
+
+            $user = User::all();
+            dd($user);
+
+        }else{
+            return view('admin.login');
+        }
+
     }
 
     public function code()

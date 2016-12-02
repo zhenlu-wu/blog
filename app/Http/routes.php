@@ -26,3 +26,7 @@ Route::get('/admin/code','Admin\LoginController@code');
 
 //获取验证码
 Route::get('/admin/getcode','Admin\LoginController@getCode');
+
+//crypt加密
+Route::get('/admin/crypt','Admin\LoginController@crypt');
+
